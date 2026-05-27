@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão XP — Apostila Gamificada | 5º Ano</title>
+<meta name="description" content="Apostila gamificada com 64 missões de LP e Matemática para o 5º Ano. Alinhada ao Currículo Paulista. Pronta para imprimir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #0a0e1a;
+  --bg-card: #111827;
+  --blue: #2563eb;
+  --cyan: #06b6d4;
+  --purple: #7c3aed;
+  --green: #10b981;
+  --gold: #f59e0b;
+  --red: #ef4444;
+  --pink: #ec4899;
+  --text: #f1f5f9;
+  --text-dim: #94a3b8;
+  --glow-blue: 0 0 30px rgba(37,99,235,0.3);
+  --glow-cyan: 0 0 30px rgba(6,182,212,0.3);
+  --glow-gold: 0 0 30px rgba(245,158,11,0.3);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Exo 2',sans-serif;
+  background:var(--bg-dark);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+.pixel-font { font-family:'Press Start 2P',monospace; }
+
+/* BG effects */
+body::before {
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(37,99,235,0.08) 0%,transparent 50%),
+              radial-gradient(ellipse at 80% 20%,rgba(124,58,237,0.06) 0%,transparent 50%),
+              radial-gradient(ellipse at 50% 80%,rgba(6,182,212,0.05) 0%,transparent 50%);
+  pointer-events:none;z-index:0;
+}
+
+.container { max-width:900px; margin:0 auto; padding:0 20px; position:relative; z-index:1; }
+
+/* HERO */
+.hero { padding:80px 0 60px; text-align:center; }
+.hero-badge {
+  display:inline-block;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  color:white; font-size:11px; font-weight:800; letter-spacing:3px;
+  padding:6px 20px; border-radius:20px; margin-bottom:24px;
+  text-transform:uppercase; animation:fadeDown 0.8s ease;
+}
+.hero h1 {
+  font-size:clamp(36px,7vw,64px); font-weight:900; line-height:1.05;
+  margin-bottom:12px; animation:fadeDown 0.8s ease 0.1s both;
+}
+.hero h1 .accent { color:var(--cyan); }
+.hero h1 .gold { color:var(--gold); }
+.hero-sub {
+  font-size:clamp(16px,3vw,20px); color:var(--text-dim);
+  max-width:600px; margin:0 auto 32px; animation:fadeDown 0.8s ease 0.2s both;
+}
+.hero-cta {
+  display:inline-block;
+  background:linear-gradient(135deg,var(--green),#059669);
+  color:white; font-size:18px; font-weight:800; text-decoration:none;
+  padding:16px 40px; border-radius:12px;
+  box-shadow:0 4px 20px rgba(16,185,129,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+  animation:fadeDown 0.8s ease 0.3s both;
+}
+.hero-cta:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(16,185,129,0.5); }
+.hero-price {
+  margin-top:16px; font-size:14px; color:var(--text-dim);
+  animation:fadeDown 0.8s ease 0.4s both;
+}
+.hero-price strong { color:var(--gold); font-size:28px; }
+.hero-price s { color:#475569; }
+
+/* STATS BAR */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+  margin:40px 0; animation:fadeDown 0.8s ease 0.5s both;
+}
+.stat {
+  background:var(--bg-card); border:1px solid #1e293b;
+  border-radius:12px; padding:16px; text-align:center;
+}
+.stat-num { font-size:28px; font-weight:900; color:var(--cyan); }
+.stat-label { font-size:11px; color:var(--text-dim); font-weight:700; letter-spacing:1px; margin-top:4px; }
+
+/* SECTION */
+.section { padding:60px 0; }
+.section-tag {
+  font-size:11px; font-weight:800; letter-spacing:3px; text-transform:uppercase;
+  color:var(--cyan); margin-bottom:8px;
+}
+.section-title { font-size:clamp(24px,5vw,36px); font-weight:900; margin-bottom:20px; }
+.section-text { font-size:17px; color:var(--text-dim); max-width:700px; line-height:1.7; }
+
+/* PROBLEM */
+.problem-box {
+  background:linear-gradient(135deg,#1e1028,#0f1629);
+  border:1px solid #2d1b4e; border-radius:16px; padding:32px;
+  margin-top:24px; position:relative; overflow:hidden;
+}
+.problem-box::before {
+  content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+  background:linear-gradient(to bottom,var(--red),var(--pink));
+}
+.problem-box p { font-size:17px; color:#cbd5e1; line-height:1.8; }
+.problem-box p + p { margin-top:16px; }
+.problem-box strong { color:var(--red); }
+
+/* FEATURES */
+.features-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; }
+.feature-card {
+  background:var(--bg-card); border:1px solid #1e293b;
+  border-radius:14px; padding:20px; transition:border-color 0.3s,transform 0.3s;
+}
+.feature-card:hover { border-color:var(--cyan); transform:translateY(-3px); }
+.feature-icon { font-size:28px; margin-bottom:10px; }
+.feature-title { font-size:15px; font-weight:800; margin-bottom:6px; }
+.feature-desc { font-size:13px; color:var(--text-dim); line-height:1.5; }
+
+/* INCLUDES */
+.includes-list { margin-top:24px; }
+.include-item {
+  display:flex; align-items:flex-start; gap:14px;
+  background:var(--bg-card); border:1px solid #1e293b;
+  border-radius:12px; padding:16px 20px; margin-bottom:10px;
+  transition:border-color 0.3s;
+}
+.include-item:hover { border-color:var(--green); }
+.include-check {
+  width:28px; height:28px; border-radius:8px; flex-shrink:0;
+  background:linear-gradient(135deg,var(--green),#059669);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:900; color:white;
+}
+.include-text { font-size:15px; font-weight:600; }
+.include-detail { font-size:13px; color:var(--text-dim); margin-top:2px; }
+
+/* PRICING */
+.pricing-box {
+  background:linear-gradient(135deg,#0c1a3a,#1a0c3a);
+  border:2px solid var(--gold); border-radius:20px;
+  padding:40px; text-align:center; margin-top:24px;
+  box-shadow:var(--glow-gold);
+}
+.pricing-tag {
+  display:inline-block; background:var(--gold); color:#0a0e1a;
+  font-size:11px; font-weight:900; letter-spacing:2px;
+  padding:4px 16px; border-radius:20px; margin-bottom:16px;
+}
+.pricing-old { font-size:18px; color:#64748b; text-decoration:line-through; }
+.pricing-new { font-size:52px; font-weight:900; color:var(--gold); margin:8px 0; }
+.pricing-new small { font-size:20px; color:var(--text-dim); }
+.pricing-detail { font-size:14px; color:var(--text-dim); margin-bottom:24px; }
+.pricing-cta {
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold),#d97706);
+  color:#0a0e1a; font-size:18px; font-weight:900; text-decoration:none;
+  padding:16px 48px; border-radius:12px;
+  box-shadow:0 4px 20px rgba(245,158,11,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.pricing-cta:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(245,158,11,0.5); }
+.pricing-guarantee {
+  margin-top:20px; font-size:13px; color:var(--text-dim);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+}
+
+/* FAQ */
+.faq-item {
+  background:var(--bg-card); border:1px solid #1e293b;
+  border-radius:12px; margin-bottom:10px; overflow:hidden;
+}
+.faq-q {
+  padding:16px 20px; font-size:15px; font-weight:700;
+  cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+}
+.faq-q:hover { color:var(--cyan); }
+.faq-a { padding:0 20px 16px; font-size:14px; color:var(--text-dim); line-height:1.6; display:none; }
+.faq-item.open .faq-a { display:block; }
+.faq-item.open .faq-arrow { transform:rotate(180deg); }
+.faq-arrow { transition:transform 0.3s; font-size:12px; }
+
+/* FOOTER CTA */
+.footer-cta {
+  text-align:center; padding:60px 0 80px;
+}
+.footer-cta h2 { font-size:clamp(22px,4vw,32px); font-weight:900; margin-bottom:8px; }
+.footer-cta p { color:var(--text-dim); font-size:16px; margin-bottom:24px; }
+
+/* FOOTER */
+footer {
+  border-top:1px solid #1e293b; padding:24px 0; text-align:center;
+  font-size:12px; color:#475569;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* RESPONSIVE */
+@media(max-width:640px) {
+  .stats-bar { grid-template-columns:1fr 1fr; }
+  .features-grid { grid-template-columns:1fr; }
+  .pricing-box { padding:24px 16px; }
+  .hero { padding:50px 0 40px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">APOSTILA GAMIFICADA</div>
+    <h1>
+      Professor do 5º Ano,<br>
+      <span class="accent">nunca mais perca tempo</span><br>
+      preparando tarefa de casa<span class="gold">.</span>
+    </h1>
+    <p class="hero-sub">
+      64 missões gamificadas de LP e Matemática, alinhadas aula por aula ao Currículo Paulista. Entregue no primeiro dia e esqueça até o fim do bimestre.
+    </p>
+    <a href="#LINK_KIWIFY" class="hero-cta">QUERO MINHA APOSTILA →</a>
+    <div class="hero-price">
+      <s>De R$ 79,90</s> &nbsp; por apenas &nbsp;<strong>R$ 49,90</strong>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">64</div><div class="stat-label">MISSÕES</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">DISCIPLINAS</div></div>
+    <div class="stat"><div class="stat-num">1.280</div><div class="stat-label">XP TOTAL</div></div>
+    <div class="stat"><div class="stat-num">32</div><div class="stat-label">AULAS COBERTAS</div></div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="section">
+    <div class="section-tag">O PROBLEMA</div>
+    <h2 class="section-title">Você já viveu isso?</h2>
+    <div class="problem-box">
+      <p>Chegar em casa depois de um dia inteiro de aula e ainda ter que <strong>preparar tarefa de casa</strong> para o dia seguinte.</p>
+      <p>Procurar no Google, adaptar atividade genérica, formatar, imprimir. <strong>Toda semana. O bimestre inteiro.</strong></p>
+      <p>E o pior: o aluno recebe a folhinha, <strong>enfia na mochila e nem faz.</strong></p>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="section">
+    <div class="section-tag">A SOLUÇÃO</div>
+    <h2 class="section-title">Conheça a Missão XP</h2>
+    <p class="section-text">
+      Uma apostila gamificada onde cada tarefa de casa é uma missão com sistema de XP, desafios e um mascote que acompanha o aluno.
+    </p>
+    <p class="section-text" style="margin-top:16px">
+      Cada missão corresponde a uma aula do livro do Currículo Paulista — 5º Ano, 2º Bimestre. Você entrega a apostila uma vez e <strong style="color:var(--cyan)">não prepara mais nada até o final do bimestre.</strong>
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Alinhada ao Currículo</div>
+        <div class="feature-desc">Cada missão corresponde a uma aula do livro do Estado de SP. Sem adaptação necessária.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <div class="feature-title">Formato Gamificado</div>
+        <div class="feature-desc">Sistema de XP, níveis e desafios que motivam o aluno a completar as tarefas.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🖨️</div>
+        <div class="feature-title">Pronta para Imprimir</div>
+        <div class="feature-desc">PDF em alta qualidade. Imprime uma vez, entrega no primeiro dia, usa o bimestre todo.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <div class="feature-title">Economiza Seu Tempo</div>
+        <div class="feature-desc">Chega de criar tarefa toda semana. Tudo pronto — objetivo, questões, gabarito e dicas.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATS INCLUDED -->
+  <section class="section">
+    <div class="section-tag">O QUE ESTÁ INCLUSO</div>
+    <h2 class="section-title">Tudo que você recebe</h2>
+    <div class="includes-list">
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <div>
+          <div class="include-text">Apostila de Língua Portuguesa — 32 Missões</div>
+          <div class="include-detail">Fábula, poema, conto, lenda, crônica, texto argumentativo, instrucional e mais.</div>
+        </div>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <div>
+          <div class="include-text">Apostila de Matemática — 32 Missões</div>
+          <div class="include-detail">Geometria, medidas, operações, frações, equações e situações-problema.</div>
+        </div>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <div>
+          <div class="include-text">Gabarito Comentado</div>
+          <div class="include-detail">Respostas das questões objetivas das duas disciplinas.</div>
+        </div>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <div>
+          <div class="include-text">Guia do Professor</div>
+          <div class="include-detail">Orientações de uso, cronograma sugerido e sistema de pontuação.</div>
+        </div>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <div>
+          <div class="include-text">Impressão Ilimitada</div>
+          <div class="include-detail">Use para quantas turmas quiser. O PDF é seu para sempre.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-tag">COMO FUNCIONA</div>
+    <h2 class="section-title">Cada missão tem esta estrutura</h2>
+    <div class="features-grid">
+      <div class="feature-card" style="border-color:#1e40af">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Objetivo da Missão</div>
+        <div class="feature-desc">Descreve o que o aluno vai praticar, em linguagem acessível.</div>
+      </div>
+      <div class="feature-card" style="border-color:#1e40af">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-title">Desafio Principal (+10 XP)</div>
+        <div class="feature-desc">2 questões diretamente ligadas ao conteúdo da aula.</div>
+      </div>
+      <div class="feature-card" style="border-color:#9a3412">
+        <div class="feature-icon">⭐</div>
+        <div class="feature-title">Desafio Bônus (+10 XP)</div>
+        <div class="feature-desc">Atividade extra de maior complexidade ou criatividade.</div>
+      </div>
+      <div class="feature-card" style="border-color:#a16207">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">Dica do Robozinho</div>
+        <div class="feature-desc">Dica pedagógica que ajuda o aluno a resolver sem precisar do livro em casa.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section">
+    <div class="section-tag">INVESTIMENTO</div>
+    <h2 class="section-title">Quanto custa nunca mais preparar tarefa?</h2>
+    <div class="pricing-box">
+      <div class="pricing-tag">COMBO COMPLETO</div>
+      <div class="pricing-old">R$ 79,90</div>
+      <div class="pricing-new">R$ 49<small>,90</small></div>
+      <div class="pricing-detail">
+        LP + Matemática + Gabarito + Guia do Professor<br>
+        Pagamento único · Acesso imediato · PDF para sempre
+      </div>
+      <a href="#LINK_KIWIFY" class="pricing-cta">GARANTIR MINHA APOSTILA →</a>
+      <div class="pricing-guarantee">
+        🔒 Garantia de 7 dias · Não gostou, devolvemos 100%
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="section">
+    <div class="section-tag">PARA QUEM É</div>
+    <h2 class="section-title">Este material é para você se...</h2>
+    <div class="includes-list">
+      <div class="include-item"><div class="include-check">✓</div><div><div class="include-text">É professor do 5º Ano da rede estadual de SP</div></div></div>
+      <div class="include-item"><div class="include-check">✓</div><div><div class="include-text">Usa o material do Currículo Paulista em sala</div></div></div>
+      <div class="include-item"><div class="include-check">✓</div><div><div class="include-text">Quer economizar tempo sem perder qualidade</div></div></div>
+      <div class="include-item"><div class="include-check">✓</div><div><div class="include-text">Quer que seus alunos façam a tarefa com mais vontade</div></div></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-tag">DÚVIDAS FREQUENTES</div>
+    <h2 class="section-title">Perguntas e respostas</h2>
+    <div style="margin-top:24px">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          O aluno precisa do livro do Estado em casa?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">Não. Todas as atividades foram pensadas para serem resolvidas com base no que foi aprendido em sala de aula. O aluno não precisa consultar o livro em casa.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Posso imprimir para todos os meus alunos?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">Sim. O PDF é seu — imprima quantas vezes precisar, para quantas turmas quiser. Sem limite.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Em que formato recebo o material?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">PDF pronto para impressão, enviado imediatamente após a confirmação do pagamento.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Serve para escola particular?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">Somente se a escola usar o material do Currículo Paulista do Estado de SP. As missões são alinhadas aula por aula a esse material.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          E se eu não gostar?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">Você tem 7 dias de garantia incondicional. Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Tem material para outros anos ou bimestres?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">No momento temos apenas o 5º Ano — 2º Bimestre. Versões para outros bimestres e anos estão em desenvolvimento.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="footer-cta">
+    <h2>A missão começa agora.<br><span style="color:var(--gold)">Você está pronto?</span></h2>
+    <p>Garanta sua apostila e nunca mais perca tempo preparando tarefa de casa.</p>
+    <a href="#LINK_KIWIFY" class="hero-cta">QUERO MINHA APOSTILA — R$ 49,90 →</a>
+    <div class="pricing-guarantee" style="margin-top:16px">
+      🔒 Garantia de 7 dias · Pagamento seguro · Acesso imediato
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    Missão XP — Apostila Gamificada | 5º Ano | 2º Bimestre<br>
+    Currículo Paulista — Rede Estadual de São Paulo
+  </div>
+</footer>
+
+</body>
+</html>
